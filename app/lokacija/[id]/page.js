@@ -1,31 +1,29 @@
 const LokacijaPage = ({ params }) => {
 	const id = params.id;
-	const locations = [
-		{
-			id: 1,
-			lat: 44.115243,
-			lng: 19.290845,
-			title: "Ratna bolnica",
-			content: `Ratna bolnica je bila jedna od najznačajnijih tačaka u životu Srebreničana, pogotovo u periodu do proglašenja Srebrenice kao "Zaštićene zone UN-a"`,
-		},
-
-		{
-			id: 2,
-			lat: 44.1171821,
-			lng: 19.2895582,
-			title: "Vezionica",
-			content: `U Vezionici je bila Bravo četa Holandskog bataljona`,
-		},
-
-		{
-			id: 3,
-			lat: 44.1487059,
-			lng: 19.2846734,
-			title: "Fabrika akumulatora",
-			content: `U Fabrici akumulatora je bila smještena komanda Dutchbata`,
-		},
-	];
-	return <div>{locations[id].content}</div>;
+	console.log("params", params);
+	const locations = {
+		id: 1,
+		lat: 44.115243,
+		lng: 19.290845,
+		title: "Ratna bolnica",
+		content: `Ratna bolnica je bila jedna od najznačajnijih tačaka u životu Srebreničana, pogotovo u periodu do proglašenja Srebrenice kao "Zaštićene zone UN-a"`,
+		videos: [
+			'<iframe width="560" height="315" src="https://www.youtube.com/embed/nAXmucn0uq0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
+		],
+	};
+	return (
+		<div>
+			<h1>{locations.title}</h1>
+			<p>{locations.content}</p>
+			{locations.videos.length > 0 &&
+				locations.videos.map((video, index) => (
+					<div
+						key={index}
+						dangerouslySetInnerHTML={{ __html: video }}
+					></div>
+				))}
+		</div>
+	);
 };
 
 export default LokacijaPage;

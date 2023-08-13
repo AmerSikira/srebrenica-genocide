@@ -46,8 +46,7 @@ export default function Home() {
 					height="100vh"
 					locations={locations}
 				/>
-				{activeLocation && <Modal>Test</Modal>}{" "}
-				{/* Correctly use the Modal component */}
+				
 			</ActiveLocationContextProvider>
 		</main>
 	);
